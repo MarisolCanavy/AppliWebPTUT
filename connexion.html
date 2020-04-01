@@ -22,13 +22,13 @@
     <!--pas de header car unique page de cxonnexion-->
 </header>
 <body>
-    <form class="log-in-form">
+    <form class="log-in-form" id="formconnexion">
     <h1 class="text-center">Se connecter</h4>
     <label>Mail
-      <input type="email" placeholder="monmail@exemple.fr">
+      <input type="email" placeholder="monmail@exemple.fr" id="adressemail" required>
     </label>
     <label>Mot de Passe
-      <input type="password" placeholder="Mot de Passe">
+      <input type="password" placeholder="Mot de Passe" id="motdepasse" required>
       <!-- Mettre un truc clicable pour montrer le mdp-->
     </label>
     <p><input type="submit" class="button expanded" value="Connexion" ></input></p>
@@ -38,5 +38,5 @@
     </body>
 
 <footer>
-    <p class="text-center">© Copyright 2020 Marisol Canavy</p>
+    <p class="text-center">© Copyright 2020 PTUT</p>
 </footer>
