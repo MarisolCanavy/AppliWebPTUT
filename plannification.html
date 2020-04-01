@@ -26,20 +26,20 @@
             <div class="top-bar-left">
                 <ul class="menu">
                     <li class="menu-text"> iCare</li>
-                    <li ><a href="plannification.html">Plannification</a></li>
-                    <li><a href="#">Planning</a></li>
-                    <li><a href="#">Messagerie</a></li>
-                    <li><a href="#">Alertes</a></li>
-                    <li><input type="search" placeholder="Effectuer une recherche"></li>
-                    <li><button type="button" class="button">Recherche</button></li>
+                    <li><a href="plannification.html">Plannification</a></li>
+                    <li><a href="planning.html">Planning</a></li>
+                    <li><a href="messagerie.html">Messagerie</a></li>
+                    <li><a href="alerte.html">Alertes</a></li>
+                    <li><input type="search" placeholder="Effectuer une recherche" id="recherche"></li>
+                    <li><button type="button" class="button">Recherche</button></li> <!-- action php en fonction de la recherche-->
                 </ul>
             </div>
             <div class="top-bar-right">
                 <ul class="menu">
                     <li><img class="photo-de-profil" src="img/emma.png"></li>
-                    <li><a href="#">Mon profil</a></li>
-                    <li><a href="#">Paramètres</a></li>
-                    <li><a href="#">Déconnexion</a></li>
+                    <li><a href="monprofil.html">Mon profil</a></li>
+                    <li><a href="paramètres.html">Paramètres</a></li>
+                    <li><a href="connexion.html">Déconnexion</a></li> <!-- insérer un effet à la déconnexion-->
                 </ul>
             </div>
         </div>
@@ -70,7 +70,7 @@
                         <section class="tag-cloud-section" style="transform: translateY(60%);">
                             <h5 class="tag-cloud-title">Liste de.s patient.s à prendre en charge :</h5>
                             <section class="tag-cloud menu vertical">
-                              <button class="tag-cloud-individual-tag" onclick="positionnerMarqueur()">François</button>
+                              <a class="tag-cloud-individual-tag" onclick="positionnerMarqueur()">François</button>
                               <a class="tag-cloud-individual-tag" href="#">Danielle</a>
                               <a class="tag-cloud-individual-tag" href="#">Armande</a>
                               <a class="tag-cloud-individual-tag" href="#">Jean</a>
@@ -83,8 +83,8 @@
         </div>
     </div>
     </main>
-
 </body>
+
 <footer>
-    <!-- <p class="text-center">© Copyright 2020 Marisol Canavy</p> -->
+    <p class="text-center">© Copyright 2020 PTUT</p>
 </footer>

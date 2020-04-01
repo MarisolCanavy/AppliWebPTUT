@@ -8,8 +8,9 @@ function initMap() {
     });
 }
 
+//essayer de faire aparaitre et disparaitre le marqueur
+
 function positionnerMarqueur() {
-        console.log("hello");
     // Positionnement marqueur
     var pos = { lat: 43.215789, lng: 2.345170 };
     var marker = new google.maps.Marker({ position: pos, map: map });

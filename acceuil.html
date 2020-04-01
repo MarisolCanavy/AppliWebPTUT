@@ -25,19 +25,19 @@
                 <ul class="menu">
                     <li class="menu-text"> iCare</li>
                     <li><a href="plannification.html">Plannification</a></li>
-                    <li><a href="#">Planning</a></li>
-                    <li><a href="#">Messagerie</a></li>
-                    <li><a href="#">Alertes</a></li>
-                    <li><input type="search" placeholder="Effectuer une recherche"></li>
-                    <li><button type="button" class="button">Recherche</button></li>
+                    <li><a href="planning.html">Planning</a></li>
+                    <li><a href="messagerie.html">Messagerie</a></li>
+                    <li><a href="alerte.html">Alertes</a></li>
+                    <li><input type="search" placeholder="Effectuer une recherche" id="recherche"></li>
+                    <li><button type="button" class="button">Recherche</button></li> <!-- action php en fonction de la recherche-->
                 </ul>
             </div>
             <div class="top-bar-right">
                 <ul class="menu">
                     <li><img class="photo-de-profil" src="img/emma.png"></li>
-                    <li><a href="#">Mon profil</a></li>
-                    <li><a href="#">Paramètres</a></li>
-                    <li><a href="#">Déconnexion</a></li>
+                    <li><a href="monprofil.html">Mon profil</a></li>
+                    <li><a href="paramètres.html">Paramètres</a></li>
+                    <li><a href="connexion.html">Déconnexion</a></li> <!-- insérer un effet à la déconnexion-->
                 </ul>
             </div>
         </div>
@@ -48,7 +48,7 @@
             <!--Droite texte + flèche-->
             <div class="cell small-4">
                 <div class="cell" style="transform: translateY(50%);">
-                    <h1>Bonjour, $Prénom!</h1> <br>
+                    <h1>Bonjour, $Prénom!</h1> <br> <!-- récuperer le nom et l'afficher-->
                     <h2>Comment allez-vous?</h2>  <br>
                     <p>Prête pour une nouvelle journée?</p><br>
                     <p><a class="button expanded" href="plannification.html">Commencer la plannification</a></p>
