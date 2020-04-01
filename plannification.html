@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Acceuil Page">
+    <meta name="keywords"
+        content="article, articles, e-sante, e-santé, junior-entreprise, cnje, junior-entreprises, tarn, castres, junior-entreprise e-sante, junior-entreprise tarn">
+    <meta name="author" content="Marisol Canavy">
+    <link href="css/app.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Gelasio&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <!-- INSERER SCRIPT JS
+    <script type="text/javascript" src="js/main.js"></script> -->
+    <script type="text/javascript" src="js/map.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7td1HhAOlS7anji57xGNO5qulQAFNipA&callback=initMap"></script>
+    <title>Plannification</title>
+</head>
+
+<body>
+    <header>
+        <div class="top-bar" role="banner">
+            <div class="top-bar-left">
+                <ul class="menu">
+                    <li class="menu-text"> iCare</li>
+                    <li ><a href="plannification.html">Plannification</a></li>
+                    <li><a href="#">Planning</a></li>
+                    <li><a href="#">Messagerie</a></li>
+                    <li><a href="#">Alertes</a></li>
+                    <li><input type="search" placeholder="Effectuer une recherche"></li>
+                    <li><button type="button" class="button">Recherche</button></li>
+                </ul>
+            </div>
+            <div class="top-bar-right">
+                <ul class="menu">
+                    <li><img class="photo-de-profil" src="img/emma.png"></li>
+                    <li><a href="#">Mon profil</a></li>
+                    <li><a href="#">Paramètres</a></li>
+                    <li><a href="#">Déconnexion</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main style="transform: translateY(5rem);">
+        <div class="grid-container">
+        <div class="grid-y grid-margin-y">
+            <div class="cell small-4">
+                <div class="cell">
+                    <section class="tag-cloud-section">
+                        <h5 class="tag-cloud-title">INFIRMIER.E.S DISPONIBLE.S</h5>
+                        <section class="tag-cloud">
+                          <a class="tag-cloud-individual-tag" href="#">Jere</a>
+                          <a class="tag-cloud-individual-tag" href="#">Alice</a>
+                          <a class="tag-cloud-individual-tag" href="#">Gilles</a>
+                          <a class="tag-cloud-individual-tag" href="#">Juliette</a>
+                          <a class="tag-cloud-individual-tag" href="#">Lucas</a>
+                        </section>
+                      </section>
+                </div>
+            </div>
+            <div class="cell" style="height: 600px;">
+                <div class="grid-x grid-margin-x" style="height: inherit;">
+                    <div class="cell auto" >
+                        <div id="map"></div>
+                    </div>
+                    <div class="cell small-4">
+                        <section class="tag-cloud-section" style="transform: translateY(60%);">
+                            <h5 class="tag-cloud-title">Liste de.s patient.s à prendre en charge :</h5>
+                            <section class="tag-cloud menu vertical">
+                              <button class="tag-cloud-individual-tag" onclick="positionnerMarqueur()">François</button>
+                              <a class="tag-cloud-individual-tag" href="#">Danielle</a>
+                              <a class="tag-cloud-individual-tag" href="#">Armande</a>
+                              <a class="tag-cloud-individual-tag" href="#">Jean</a>
+                              <a class="tag-cloud-individual-tag" href="#">Julius</a>
+                            </section>
+                          </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+
+</body>
+<footer>
+    <!-- <p class="text-center">© Copyright 2020 Marisol Canavy</p> -->
+</footer>
