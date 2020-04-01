@@ -43,3 +43,20 @@ function attachMessage(marker, message) {
     });
 }
 
+var coordonnesVA = [
+    {lat: 43.220934, lng: 2.337686}, //Patient1
+    {lat: 43.222685, lng: 2.349477}, //Patient2
+    {lat: 43.218146, lng: 2.346757} //Patient3
+];
+
+function afficheItineraire(){
+    new google.maps.Polygon({
+        map: map,
+        paths: coordonnesVA,
+        strokeColor: '#FF0000',
+        strokeOpacity: 1.0,
+        strokeWeight: 2,
+        draggable: true,
+        geodesic: true
+      });
+}
