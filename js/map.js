@@ -16,13 +16,15 @@ function positionnerMarqueur() {
     var marker = new google.maps.Marker({ position: pos, map: map });
 }
 
+
+//affiche les 3 patients
 var coordonnesV = [
-    [43.220934, 2.337686], //Patient1
-    [43.222685, 2.349477], //Patient2
-    [43.218146, 2.346757] //Patient3
+    [43.215789, 2.345170], //Danielle
+    [43.21532, 2.34172], //Jean
+    [43.21285, 2.34365] //Armande
 ];
 
-var message = ['Patient 1', 'Patient 2', 'Patient 3'];
+var message = ['Danielle', 'Jean', 'Armande'];
 
 function affichePlusieursMarqueurs() {
     for (var i = 0; i < 3; ++i) {
@@ -43,17 +45,49 @@ function attachMessage(marker, message) {
     });
 }
 
-var coordonnesVA = [
-    {lat: 43.220934, lng: 2.337686}, //Patient1
-    {lat: 43.222685, lng: 2.349477}, //Patient2
-    {lat: 43.218146, lng: 2.346757} //Patient3
+// REALISER Ouverture Fermeture du marker
+
+// if (getComputedStyle(message.InfoWindow) != open){
+//     essage.InfoWindow.style.display
+// }
+// document.getElementById("maCreation").addEventListener("click", () => {
+//     if (getComputedStyle(afficherInfosCreation).display != "none") {
+//       afficherInfosCreation.style.display = "none";
+//     } else {
+//       afficherInfosCreation.style.display = "block";
+//     }
+//   });
+
+var coordonnesTInf1 = [
+    {lat: 43.21504, lng: 2.34417}, //Patient1Infi1
+    {lat: 43.21848, lng: 2.34395}, //Patient2Infi1
+    {lat: 43.21701, lng: 2.3397} //Patient3Infi1
 ];
 
 function afficheItineraire(){ //crée un polygone qui affiche le chemin à vol d'oiseau et la zone de couverture du patient
     new google.maps.Polygon({
         map: map,
-        paths: coordonnesVA,
+        paths: coordonnesTInf1,
         strokeColor: '#FF0000',
+        strokeOpacity: 1.0,
+        strokeWeight: 2,
+        draggable: true,
+        geodesic: true
+      });
+}
+
+
+var coordonnesTInf2 = [
+    {lat: 43.21437, lng: 2.34708}, //Patient1Infi2
+    {lat: 43.21097, lng: 2.34021}, //Patient2Infi2
+    {lat: 43.21078, lng: 2.34362} //Patient3Infi2
+];
+
+function afficheItineraire2(){ //crée un polygone qui affiche le chemin à vol d'oiseau et la zone de couverture du patient
+    new google.maps.Polygon({
+        map: map,
+        paths: coordonnesTInf2,
+        strokeColor: '#00FF00',
         strokeOpacity: 1.0,
         strokeWeight: 2,
         draggable: true,

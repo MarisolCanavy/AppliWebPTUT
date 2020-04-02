@@ -76,7 +76,7 @@
                             <h5 class="tag-cloud-title">INFIRMIER.E.S DISPONIBLE.S</h5>
                             <section class="tag-cloud">
                                 <a class="tag-cloud-individual-tag" onclick="afficheItineraire()">Jere</a>
-                                <a class="tag-cloud-individual-tag" href="#">Alice</a>
+                                <a class="tag-cloud-individual-tag" onclick="afficheItineraire2()">Alice</a>
                                 <a class="tag-cloud-individual-tag" href="#">Gilles</a>
                                 <a class="tag-cloud-individual-tag" href="#">Juliette</a>
                                 <a class="tag-cloud-individual-tag" href="#">Lucas</a>
@@ -90,19 +90,41 @@
                             <div id="map"></div>
                         </div>
                         <div class="cell small-4">
-                            <section class="tag-cloud-section" style="transform: translateY(60%);">
-                                <h5 class="tag-cloud-title"> <a onclick="affichePlusieursMarqueurs()">Liste de.s
-                                        patient.s à prendre en charge : </a></h5>
-                                <section class="tag-cloud menu vertical">
-                                    <!-- Afficher tous les marqueurs : fonction js + php -->
-                                    <a class="tag-cloud-individual-tag"
-                                        onclick="positionnerMarqueur()">François</button>
-                                        <a class="tag-cloud-individual-tag" href="#">Danielle</a>
-                                        <a class="tag-cloud-individual-tag" href="#">Armande</a>
-                                        <a class="tag-cloud-individual-tag" href="#">Jean</a>
-                                        <a class="tag-cloud-individual-tag" href="#">Julius</a>
-                                </section>
-                            </section>
+                            <div class="grid-y grid-margin-y">
+                                <div class="cell auto">
+                                    <section class="cell tag-cloud-section">
+                                        <h5 class="tag-cloud-title"> <a onclick="affichePlusieursMarqueurs()"
+                                                style="color: inherit;">Liste de.s
+                                                patient.s à prendre en charge : </a></h5>
+                                        <section class="tag-cloud menu vertical">
+                                            <!-- Afficher tous les marqueurs : fonction js + php -->
+                                            <a class="tag-cloud-individual-tag"
+                                                onclick="positionnerMarqueur()">Danielle</a>
+                                            <a class="tag-cloud-individual-tag" href="#">Armande</a>
+                                            <a class="tag-cloud-individual-tag" href="#">Jean</a>
+                                        </section>
+                                    </section>
+                                </div>
+                                <div class="cell auto">
+                                    <section class="cell tag-cloud-section" style="transform: translateY(100%);">
+                                        <strong>Infirmier: </strong>
+                                        <select id="infirmier" onchange="#">
+                                            <option value="#">Jere</option>
+                                            <option value="#">Alice</option>
+                                            <option value="#">Gilles</option>
+                                            <option value="#">Juliette</option>
+                                            <option value="#">Lucas</option>
+                                        </select>
+                                        <strong>Patient: </strong>
+                                        <select id="patient">
+                                            <option value="#">Danielle</option>
+                                            <option value="#">Armande</option>
+                                            <option value="#">Jean</option>
+                                        </select>
+                                        <p><a class="button expanded" href="#">Associer</a></p>
+                                    </section>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
