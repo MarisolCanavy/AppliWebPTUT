@@ -49,7 +49,7 @@ var coordonnesVA = [
     {lat: 43.218146, lng: 2.346757} //Patient3
 ];
 
-function afficheItineraire(){
+function afficheItineraire(){ //crée un polygone qui affiche le chemin à vol d'oiseau et la zone de couverture du patient
     new google.maps.Polygon({
         map: map,
         paths: coordonnesVA,
@@ -59,4 +59,10 @@ function afficheItineraire(){
         draggable: true,
         geodesic: true
       });
+}
+
+function reelItineraire(){
+    new DirectionsService.route({
+        origin: coordonnesVA
+    });
 }
