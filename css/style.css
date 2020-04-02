@@ -13,12 +13,6 @@
     width: 100%;
   }
 
-  /* mon compte*/
-
-.monCompte{
-  display: none; 
-}
-
 .photo-de-profil{
     border-radius: 50%;
     overflow: hidden;
