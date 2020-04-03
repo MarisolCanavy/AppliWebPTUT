@@ -2,12 +2,9 @@
     border: 1px solid #FAD4C0;
     padding: 1rem 3rem;
     border-radius: 0;
-    margin: auto;
+    margin: 1rem auto;
     width: 40%;
-    margin-top: 50vh; 
-    transform: translateY(-60%);
   }
-
 
 .sticky-topbar {
     width: 100%;

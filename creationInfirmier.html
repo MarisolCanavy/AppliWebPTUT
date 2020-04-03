@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Accueil">
+    <meta name="description" content="Création Fichier Infirmier">
     <meta name="keywords" content="#">
     <meta name="author" content="Marisol Canavy">
     <link href="css/app.css" rel="stylesheet">
@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Gelasio&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-    <title>Accueil</title>
+    <!-- INSERER SCRIPT JS -->
+    <title>Création Fichier Infirmier</title>
 </head>
 
 <body>
@@ -50,7 +51,7 @@
                                 <ul class="submenu menu vertical is-dropdown-submenu first-sub"
                                     id="afficherInfosCompte">
                                     <li><a href="monprofil.html">Mon profil</a></li>
-                                    <li><a href="moncompte.html">Mon compte</a></li>
+                                    <li><a href="monprofil.html">Mon compte</a></li>
                                     <li><a href="paramètres.html">Paramètres</a></li>
                                     <li><a href="connexion.html">Déconnexion</a></li>
                                 </ul>
@@ -62,29 +63,73 @@
         </div>
     </header>
     <main>
-        <div class="grid-container fluid">
+        <form class="log-in-form" id="formPatient" style="width: 70%;">
+            <h1 class="text-center">Créer un fichier infirmier</h1>
+            <h2 class="text-left">Informations personnelles</h2>
             <div class="grid-x grid-margin-x">
-                <!--Droite texte + flèche-->
-                <div class="cell small-4">
-                    <div class="cell" style="transform: translateY(50%);">
-                        <h1>Bonjour, $Prénom!</h1> <br> <!-- récuperer le nom et l'afficher-->
-                        <h2>Comment allez-vous?</h2> <br>
-                        <p>Prête pour une nouvelle journée?</p><br>
-                        <p><a class="button expanded" href="plannification.html">Commencer la plannification</a></p>
-                    </div>
-                </div>
-                <!-- Droite gauche illustration-->
                 <div class="cell auto">
-                    <div class="illustration">
-                        <img src="img/calendar-colour-800px.png">
-                    </div>
+                    <label>Nom
+                        <input type="text" placeholder="Dupont" id="name" required>
+                    </label>
+                </div>
+                <div class="cell auto">
+                    <label>Prénom
+                        <input type="text" placeholder="François" id="surname" required>
+                    </label>
+                </div>
+                <div class="cell auto">
+                    <label>Date de Naissance
+                        <input type="date" placeholder="01/11/1950" id="dateNaiss" required>
+                    </label>
                 </div>
             </div>
-        </div>
+            <div class="grid-x grid-margin-x">
+                <div class=" cell auto ">
+                    <label>Adresse</label>
+                    <input type="text" placeholder="16 rue Emile Zola" id="road" required>
+                </div>
+                <div class="cell small-3 medium-2 ">
+                    <label>Code Postal
+                        <input type="number" placeholder="11000" id="zipcode" required>
+                    </label>
+                </div>
+                <div class="cell auto">
+                    <label>Ville
+                        <input type="text" placeholder="Carcassonne" id="city" required>
+                    </label>
+                </div>
+            </div>
+            <div class="grid-x grid-margin-x">
+                <div class="cell auto">
+                    <label>Numéro de téléphone
+                        <input type="tel" placeholder="06 03 35 31 43" id="tellNumber" required>
+                    </label>
+                </div>
+                <div class="cell auto">
+                    <label>Mail
+                        <input type="email" placeholder="dupont.francois@gmail.fr" id="email" required>
+                    </label>
+                </div>
+            </div>
+
+            <h2 class="text-left">Commentaires</h2>
+            <div class="grid-x grid-margin-x">
+                
+                <div class="cell small-12" >
+                    <label>
+                        <textarea type="text" placeholder="Il souffre de ...." rows="5" id="commentaire" required></textarea>
+                    </label>
+                </div>
+            </div>
+
+            <p><input type="submit" class="button expanded" value="Créer le fichier"></input></p>
+            <!--<p><a class="button expanded" href="#">Créer le fichier</a></p>-->
+        </form>
     </main>
     <!-- SCRIPT JS-->
     <script type="text/javascript" src="js/doc.js"></script>
 </body>
+
 <footer>
     <p class="text-center">© Copyright 2020 PTUT</p>
 </footer>
