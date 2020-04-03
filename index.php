@@ -71,4 +71,3 @@
 
 <footer>
     <p class="text-center">© Copyright 2020 PTUT</p>
-</footer>
