@@ -7,7 +7,7 @@
         $mailconnect = htmlspecialchars($_POST['mailconnexion']);
         $passwordconnect= ($_POST['mdpconnexion']);
         if(!empty($mailconnect) AND !empty($passwordconnect)){
-            $requser = $bdd->prepare("SELECT * FROM infirmier WHERE email=?");
+            $requser = $bdd->prepare("SELECT * FROM profil WHERE email=?");
             $requser->execute(array($mailconnect));
             $userexist = $requser->rowCount();
             $userinfo = $requser->fetch();

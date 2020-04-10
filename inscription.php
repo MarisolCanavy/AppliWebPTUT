@@ -25,7 +25,7 @@ if(isset($_POST["forminscription"])){
         {
           if($mail==$mail2)
           {
-            $asklistemail=$bdd->prepare("SELECT email FROM infirmier");
+            $asklistemail=$bdd->prepare("SELECT email FROM profil");
             $asklistemail->execute();
             $nbmail = $asklistemail->rowCount(); 
             for ($i = 1; $i <= $nbmail; $i++) 
@@ -46,7 +46,7 @@ if(isset($_POST["forminscription"])){
                 $password=password_hash($password, PASSWORD_DEFAULT);
                 try
                 {
-                $insertuser=$bdd->prepare("INSERT INTO infirmier(nom,prenom,email,password) VALUES (?,?,?,?)");
+                $insertuser=$bdd->prepare("INSERT INTO profil(nom,prenom,email,password) VALUES (?,?,?,?)");
                 $insertuser->execute(array($nom,$prenom,$mail,$password));
                 $erreur = "Votre compte a bien été créé <a href='index.php'> Me connecter</a>";
                 header('Location:inscription.php');
@@ -90,7 +90,7 @@ if(isset($_POST["forminscription"])){
   <body>
     <div align="center">
       <h2>Inscription</h2>
-      <form method="POST" action="">
+      <form method="POST">
         <table>
           <tr>
             <td align="right">
