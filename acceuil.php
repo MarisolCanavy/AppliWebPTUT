@@ -1,3 +1,16 @@
+<?php
+    session_start();
+    $bdd = new PDO('mysql:host=localhost;dbname=icare','root','');
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Gestion des erreurs
+
+    if(isset($_GET['id']) AND $_GET['id']>0){
+    $getid = intval($_GET['id']);
+    $requser = $bdd->prepare("SELECT * FROM infirmier WHERE id=?");
+    $requser->execute(array($getid));
+    $userinfo = $requser->fetch();
+
+}
+?>
 <!DOCTYPE html>
 
 <head>
@@ -49,10 +62,10 @@
                                 <!-- insérer un effet à la déconnexion-->
                                 <ul class="submenu menu vertical is-dropdown-submenu first-sub"
                                     id="afficherInfosCompte">
-                                    <li><a href="monprofil.html">Mon profil</a></li>
+                                    <li><a href="profil.php">Mon profil</a></li>
                                     <li><a href="moncompte.html">Mon compte</a></li>
                                     <li><a href="paramètres.html">Paramètres</a></li>
-                                    <li><a href="connexion.html">Déconnexion</a></li>
+                                    <li><a href="deconnexion.php">Déconnexion</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -67,7 +80,7 @@
                 <!--Droite texte + flèche-->
                 <div class="cell small-4">
                     <div class="cell" style="transform: translateY(50%);">
-                        <h1>Bonjour, $Prénom!</h1> <br> <!-- récuperer le nom et l'afficher-->
+                        <h1>Bonjour, <?php echo $_SESSION['prenom'];?></h1> <br> <!-- récuperer le nom et l'afficher-->
                         <h2>Comment allez-vous?</h2> <br>
                         <p>Prête pour une nouvelle journée?</p><br>
                         <p><a class="button expanded" href="plannification.html">Commencer la plannification</a></p>
@@ -88,3 +101,6 @@
 <footer>
     <p class="text-center">© Copyright 2020 PTUT</p>
 </footer>
+<?php
+
+?>

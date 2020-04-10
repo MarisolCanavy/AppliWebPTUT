@@ -11,6 +11,7 @@ if(isset($_POST["forminscription"])){
     $mail2 = htmlspecialchars($_POST['mail2']);
     $password = ($_POST['password']);
     $password2 = ($_POST['password2']); 
+    $annule=false;
 
   if(!empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['password']) AND !empty($_POST['password2'])){
 
@@ -20,22 +21,47 @@ if(isset($_POST["forminscription"])){
     {
       if($prenomlength<=25)
       {   
-       if(filter_var($mail,FILTER_VALIDATE_EMAIL)){
-        if($mail==$mail2){
-            if($password==$password2){
-              $password=password_hash($password, PASSWORD_DEFAULT);
-              try{
-              $insertuser=$bdd->prepare("INSERT INTO infirmier(nom,prenom,email,password) VALUES (?,?,?,?)");
-              $insertuser->execute(array($nom,$prenom,$mail,$password));
-              $erreur = "Votre compte a bien ete cree";}
-              catch(PDOException $e){
-                die('Error' . $e->getMessage());
+        if(filter_var($mail,FILTER_VALIDATE_EMAIL))
+        {
+          if($mail==$mail2)
+          {
+            $asklistemail=$bdd->prepare("SELECT email FROM infirmier");
+            $asklistemail->execute();
+            $nbmail = $asklistemail->rowCount(); 
+            for ($i = 1; $i <= $nbmail; $i++) 
+            {            
+              $listemail = $asklistemail->fetch();
+              if ($mail==$listemail['email'])
+              {
+                $annule=true;
               }
             }
-            else{
-              $erreur="Vos mots de passe ne correspondent pas !";
+            if($annule==true)
+            {
+              $erreur = "Le mail que vous avez entré est déjà utilisé";             
             }
-          }else{
+            else{
+              if($password==$password2)
+              {
+                $password=password_hash($password, PASSWORD_DEFAULT);
+                try
+                {
+                $insertuser=$bdd->prepare("INSERT INTO infirmier(nom,prenom,email,password) VALUES (?,?,?,?)");
+                $insertuser->execute(array($nom,$prenom,$mail,$password));
+                $erreur = "Votre compte a bien été créé <a href='index.php'> Me connecter</a>";
+                header('Location:inscription.php');
+                }
+                catch(PDOException $e)
+                {
+                  die('Error' . $e->getMessage());
+                }
+              }          
+              else{
+                $erreur="Vos mots de passe ne correspondent pas !";
+              }
+            }
+          }
+          else{
             $erreur="Vos adresses mails ne correspondent pas !";
           }
         }
@@ -48,13 +74,13 @@ if(isset($_POST["forminscription"])){
       } 
     }
     else{
-      $erreur="Votre nom ne doit pas depasser 25 caractères !";
+    $erreur="Votre nom ne doit pas depasser 25 caractères !";
     } 
   }
   else{
     $erreur="Tous les champs doivent être completes !";
   }
-}
+} 
 ?>
 <Html>
   <head>

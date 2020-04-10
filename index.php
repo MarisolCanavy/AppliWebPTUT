@@ -18,7 +18,7 @@
                     $_SESSION['nom']=$userinfo['nom'];
                     $_SESSION['prenom']=$userinfo['prenom'];
                     $_SESSION['email']=$userinfo['email'];
-                    header("Location:acceuil.html?id=".$_SESSION['id']);
+                    header("Location:acceuil.php?id=".$_SESSION['id']);
                 } 
                 else{echo "Mauvais identifiant ou mot de passe! 2";
                 }
