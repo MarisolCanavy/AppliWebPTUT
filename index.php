@@ -1,28 +1,31 @@
 <?php
-
-    $bdd = new PDO('mysql:host:127.0.0.1;dbname=icare','root','');
+    session_start();
+    $bdd = new PDO('mysql:host=localhost;dbname=icare','root','');
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Gestion des erreurs.
 
     if (isset($_POST['formconnexion'])){
-        $mailconnect = htmlspecialchars($_POST['adressemail']);
-        $passwordconnect= password_hash(($_POST['motdepasse']), PASSWORD_DEFAULT);
-        if(!empty($mailconnect) AND !passwordconnect($passwordconnect)){
-            $requser = $bdd->prepare("SELECT idInfirmier,password FROM Infirmier WHERE nom= Bernard");
-            $requser->execute(array($nom));
-            $userifo = $requser->fetch();
-            $isPasswordCorrect = password_verify($passwordconnect, $userifo['password']);
-            if(!$userifo){
-                echo "Mauvais identifiant ou mot de passe!";
+        $mailconnect = htmlspecialchars($_POST['mailconnexion']);
+        $passwordconnect= ($_POST['mdpconnexion']);
+        if(!empty($mailconnect) AND !empty($passwordconnect)){
+            $requser = $bdd->prepare("SELECT * FROM profil WHERE email=?");
+            $requser->execute(array($mailconnect));
+            $userexist = $requser->rowCount();
+            $userinfo = $requser->fetch();
+            if($userexist==1){
+                if (password_verify($passwordconnect, $userinfo['password'])){ 
+                    $_SESSION['id']=$userinfo['id'];
+                    echo $userinfo['id'];
+                    $_SESSION['nom']=$userinfo['nom'];
+                    $_SESSION['prenom']=$userinfo['prenom'];
+                    $_SESSION['email']=$userinfo['email'];
+                    header("Location:acceuil.php?id=".$_SESSION['id']);
+                } 
+                else{echo "Mauvais identifiant ou mot de passe! 2";
+                }
             }
             else{
-                if ($isPasswordCorrect){
-                    session_start();
-                    $_SESSION['idInfirmier']=$userinfo['idInfirmier'];
-                    $_SESSION['nom']=$userinfo['nom'];
-                    $_SESSION['email']=$userinfo['email'];
-                    header("Location:acceuil.html");
-                } 
-                else{echo "Mauvais identifiant ou mot de passe!";
-                }
+                echo "Mauvais identifiant ou mot de passe!";
+                
             }
         }
         else{$erreur = "Tous les champs doivent être complétés !";}
@@ -56,10 +59,10 @@
     <form class="log-in-form" method="POST" action="">
     <h1 class="text-center">Se connecter</h4>
     <label>Mail
-      <input type="email" placeholder="monmail@exemple.fr" id="adressemail" required>
+      <input type="email" placeholder="monmail@exemple.fr" name="mailconnexion" required>
     </label>
     <label>Mot de Passe
-      <input type="password" placeholder="Mot de Passe" id="motdepasse" required>
+      <input type="password" placeholder="Mot de Passe" name="mdpconnexion" required>
       <!-- Mettre un truc clicable pour montrer le mdp-->
     </label>
     <p><input type="submit" class="button expanded" value="Connexion" name="formconnexion" >
@@ -67,6 +70,11 @@
     <p class="text-center" ><a href="#" >Mot de passe oublié</a></p>
     <p class="text-center" ></a>Vous n'avez pas de compte? <a href="inscription.php" >S'inscrire</a></p>
     </form>
+          <?php
+      if(isset($erreur)){
+        echo "<font color='red'>".$erreur."</font>";
+      }
+      ?>
     </body>
 
 <footer>

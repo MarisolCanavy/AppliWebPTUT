@@ -1,35 +1,67 @@
 <?php
 
-$bdd = new PDO('mysql:host:localhost;dbname=icare','root','');
+$bdd = new PDO('mysql:host=localhost;dbname=icare','root','');
+$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Gestion des erreurs.
+
 
 if(isset($_POST["forminscription"])){ 
     $nom = htmlspecialchars($_POST['nom']);
-    $prénom = htmlspecialchars($_POST['prénom']);
+    $prenom = htmlspecialchars($_POST['prenom']);
     $mail = htmlspecialchars($_POST['mail']);
     $mail2 = htmlspecialchars($_POST['mail2']);
     $password = ($_POST['password']);
     $password2 = ($_POST['password2']); 
+    $annule=false;
 
-  if(!empty($_POST['nom']) AND !empty($_POST['prénom']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['password']) AND !empty($_POST['password2'])){
+  if(!empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['password']) AND !empty($_POST['password2'])){
 
     $nomlength=strlen($nom); 
-    $prénomlength=strlen($prénom);
+    $prenomlength=strlen($prenom);
     if($nomlength<=25)
     {
-      if($prénomlength<=25)
+      if($prenomlength<=25)
       {   
-       if(filter_var($mail,FILTER_VALIDATE_EMAIL)){
-        if($mail==$mail2){
-            if($password==$password2){
-              $password=password_hash($password, PASSWORD_DEFAULT);
-              $insertuser=$bdd->prepare('INSERT INTO infirmier(nom,prénom,email,password) VALUES (?,?,?,?)');
-              $insertuser->execute(array($nom,$prénom,$mail,$password));
-              $erreur = "Votre compte a bien été créé";
+        if(filter_var($mail,FILTER_VALIDATE_EMAIL))
+        {
+          if($mail==$mail2)
+          {
+            $asklistemail=$bdd->prepare("SELECT email FROM profil");
+            $asklistemail->execute();
+            $nbmail = $asklistemail->rowCount(); 
+            for ($i = 1; $i <= $nbmail; $i++) 
+            {            
+              $listemail = $asklistemail->fetch();
+              if ($mail==$listemail['email'])
+              {
+                $annule=true;
+              }
+            }
+            if($annule==true)
+            {
+              $erreur = "Le mail que vous avez entré est déjà utilisé";             
             }
             else{
-              $erreur="Vos mots de passe ne correspondent pas !";
+              if($password==$password2)
+              {
+                $password=password_hash($password, PASSWORD_DEFAULT);
+                try
+                {
+                $insertuser=$bdd->prepare("INSERT INTO profil(nom,prenom,email,password) VALUES (?,?,?,?)");
+                $insertuser->execute(array($nom,$prenom,$mail,$password));
+                $erreur = "Votre compte a bien été créé <a href='index.php'> Me connecter</a>";
+                header('Location:inscription.php');
+                }
+                catch(PDOException $e)
+                {
+                  die('Error' . $e->getMessage());
+                }
+              }          
+              else{
+                $erreur="Vos mots de passe ne correspondent pas !";
+              }
             }
-          }else{
+          }
+          else{
             $erreur="Vos adresses mails ne correspondent pas !";
           }
         }
@@ -38,17 +70,17 @@ if(isset($_POST["forminscription"])){
         }
       }
       else{
-        $erreur="Votre prénom ne doit pas dépasser 25 caractères !";
+        $erreur="Votre prenom ne doit pas depasser 25 caractères !";
       } 
     }
     else{
-      $erreur="Votre nom ne doit pas dépasser 25 caractères !";
+    $erreur="Votre nom ne doit pas depasser 25 caractères !";
     } 
   }
   else{
-    $erreur="Tous les champs doivent être complétés !";
+    $erreur="Tous les champs doivent être completes !";
   }
-}
+} 
 ?>
 <Html>
   <head>
@@ -58,7 +90,7 @@ if(isset($_POST["forminscription"])){
   <body>
     <div align="center">
       <h2>Inscription</h2>
-      <form method="POST" action="">
+      <form method="POST">
         <table>
           <tr>
             <td align="right">
@@ -70,10 +102,10 @@ if(isset($_POST["forminscription"])){
           </tr>
           <tr>
             <td align="right">
-            <label for="prénom">Prénom:</label>  
+            <label for="prenom">Prenom:</label>  
             </td> 
             <td>   
-              <input type="text" placeholder="Votre prénom" id="prénom" name="prénom" value="<?php if(isset($prénom)){echo $prénom;}?>">
+              <input type="text" placeholder="Votre prenom" id="prenom" name="prenom" value="<?php if(isset($prenom)){echo $prenom;}?>">
             <td>
           </tr>
           <tr>

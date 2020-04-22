@@ -1,3 +1,64 @@
+<?php
+
+$bdd = new PDO('mysql:host=localhost;dbname=icare','root','');
+$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Gestion des erreurs.
+
+    $valide='';
+if(isset($_POST['creationInfirmier'])){ 
+    $nom = htmlspecialchars($_POST['nom']);
+    $prenom = htmlspecialchars($_POST['prenom']);
+    $email = htmlspecialchars($_POST['email']);
+    $dateNaissance = htmlspecialchars($_POST['dateNaissance']);
+    $adresse = htmlspecialchars($_POST['adresse']);
+    $codePostal = htmlspecialchars($_POST['codePostal']); 
+    $ville = htmlspecialchars($_POST['ville']); 
+    $telephone = htmlspecialchars($_POST['telephone']); 
+    $commentaire = htmlspecialchars($_POST['commentaire']); 
+    $annule=false;
+
+  if(!empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['email']) AND !empty($_POST['dateNaissance']) AND !empty($_POST['adresse']) AND !empty($_POST['codePostal']) AND !empty($_POST['ville']) AND !empty($_POST['telephone']) AND !empty($_POST['commentaire'])){
+
+    $nomlength=strlen($nom); 
+    $prenomlength=strlen($prenom);
+    if($nomlength<=25)
+    {
+      if($prenomlength<=25)
+      {  
+        $asklistemail=$bdd->prepare("SELECT email FROM infirmier");
+        $asklistemail->execute();
+        $nbmail = $asklistemail->rowCount(); 
+        for ($i = 1; $i <= $nbmail; $i++) 
+        {            
+          $listemail = $asklistemail->fetch();
+          if ($email==$listemail['email'])
+          {
+            $annule=true;
+          }
+        }
+        if($annule==true)
+        {
+          $valide = "Le mail que vous avez entré est déjà utilisé";             
+        }
+        else{
+        $insertuser=$bdd->prepare("INSERT INTO infirmier(nom,prenom,email,dateNaissance,adresse,codePostal,ville,telephone,commentaire) VALUES (?,?,?,?,?,?,?,?,?)");
+        $insertuser->execute(array($nom,$prenom,$email,$dateNaissance,$adresse,$codePostal,$ville,$telephone,$commentaire));
+        $valide="Fichier envoyé";
+        header('Location:creationInfirmier.php');
+        }
+      }
+      else{
+        $erreur="Votre prenom ne doit pas depasser 25 caractères !";
+      } 
+    }
+    else{
+    $erreur="Votre nom ne doit pas depasser 25 caractères !";
+    } 
+  }
+  else{
+    $erreur="Tous les champs doivent être completes !";
+  }
+} 
+?>
 <!DOCTYPE html>
 
 <head>
@@ -50,7 +111,7 @@
                                 <!-- insérer un effet à la déconnexion-->
                                 <ul class="submenu menu vertical is-dropdown-submenu first-sub"
                                     id="afficherInfosCompte">
-                                    <li><a href="monprofil.html">Mon profil</a></li>
+                                    <li><a href="profil.php">Mon profil</a></li>
                                     <li><a href="monprofil.html">Mon compte</a></li>
                                     <li><a href="paramètres.html">Paramètres</a></li>
                                     <li><a href="connexion.html">Déconnexion</a></li>
@@ -63,51 +124,51 @@
         </div>
     </header>
     <main>
-        <form class="log-in-form" id="formPatient" style="width: 70%;">
+        <form class="log-in-form" id="formPatient" method='POST' style="width: 70%;">
             <h1 class="text-center">Créer un fichier infirmier</h1>
             <h2 class="text-left">Informations personnelles</h2>
             <div class="grid-x grid-margin-x">
                 <div class="cell auto">
                     <label>Nom
-                        <input type="text" placeholder="Dupont" id="name" required>
+                        <input type="text" placeholder="Dupont" id="nom" name="nom" required>
                     </label>
                 </div>
                 <div class="cell auto">
                     <label>Prénom
-                        <input type="text" placeholder="François" id="surname" required>
+                        <input type="text" placeholder="François" id="prenom" name="prenom" required>
                     </label>
                 </div>
                 <div class="cell auto">
                     <label>Date de Naissance
-                        <input type="date" placeholder="01/11/1950" id="dateNaiss" required>
+                        <input type="date" placeholder="01/11/1950" id="dateNaissance" name="dateNaissance" required>
                     </label>
                 </div>
             </div>
             <div class="grid-x grid-margin-x">
                 <div class=" cell auto ">
                     <label>Adresse</label>
-                    <input type="text" placeholder="16 rue Emile Zola" id="road" required>
+                    <input type="text" placeholder="16 rue Emile Zola" id="adresse" name="adresse" required>
                 </div>
                 <div class="cell small-3 medium-2 ">
                     <label>Code Postal
-                        <input type="number" placeholder="11000" id="zipcode" required>
+                        <input type="number" placeholder="11000" id="codePostal" name="codePostal" required>
                     </label>
                 </div>
                 <div class="cell auto">
                     <label>Ville
-                        <input type="text" placeholder="Carcassonne" id="city" required>
+                        <input type="text" placeholder="Carcassonne" id="ville" name="ville" required>
                     </label>
                 </div>
             </div>
             <div class="grid-x grid-margin-x">
                 <div class="cell auto">
                     <label>Numéro de téléphone
-                        <input type="tel" placeholder="06 03 35 31 43" id="tellNumber" required>
+                        <input type="tel" placeholder="06 03 35 31 43" id="telephone" name="telephone" required>
                     </label>
                 </div>
                 <div class="cell auto">
                     <label>Mail
-                        <input type="email" placeholder="dupont.francois@gmail.fr" id="email" required>
+                        <input type="email" placeholder="dupont.francois@gmail.fr" id="email" name="email" required>
                     </label>
                 </div>
             </div>
@@ -117,14 +178,17 @@
                 
                 <div class="cell small-12" >
                     <label>
-                        <textarea type="text" placeholder="Il souffre de ...." rows="5" id="commentaire" required></textarea>
+                        <textarea type="text" placeholder="Il souffre de ...." rows="5" id="commentaire" name="commentaire" required></textarea>
                     </label>
                 </div>
             </div>
 
-            <p><input type="submit" class="button expanded" value="Créer le fichier"></input></p>
+            <p><input type="submit" class="button expanded" name="creationInfirmier" value="Créer le fichier"></input></p>
             <!--<p><a class="button expanded" href="#">Créer le fichier</a></p>-->
         </form>
+        <?php
+        echo $valide; 
+        ?>
     </main>
     <!-- SCRIPT JS-->
     <script type="text/javascript" src="js/doc.js"></script>
