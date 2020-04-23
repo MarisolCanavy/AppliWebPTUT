@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 10 avr. 2020 à 20:53
+-- Généré le :  jeu. 23 avr. 2020 à 01:06
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -54,6 +54,37 @@ INSERT INTO `infirmier` (`idInfirmier`, `nom`, `prenom`, `email`, `dateNaissance
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `patient`
+--
+
+DROP TABLE IF EXISTS `patient`;
+CREATE TABLE IF NOT EXISTS `patient` (
+  `idPatient` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(25) NOT NULL,
+  `prenom` varchar(25) NOT NULL,
+  `email` text NOT NULL,
+  `dateNaissance` date NOT NULL,
+  `adresse` text NOT NULL,
+  `codePostal` int(11) NOT NULL,
+  `ville` varchar(50) NOT NULL,
+  `telephone` bigint(20) NOT NULL,
+  `commentaire` text NOT NULL,
+  `taille` int(11) NOT NULL,
+  `poids` int(11) NOT NULL,
+  `typeHabitation` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`idPatient`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `patient`
+--
+
+INSERT INTO `patient` (`idPatient`, `nom`, `prenom`, `email`, `dateNaissance`, `adresse`, `codePostal`, `ville`, `telephone`, `commentaire`, `taille`, `poids`, `typeHabitation`) VALUES
+(1, 'test', 'Numa', 'dza@tr.l', '2020-04-22', '52ju', 1, 'mzt', 365156010, 'uhy', 147, 57, 'state1');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `profil`
 --
 
@@ -65,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `profil` (
   `email` text NOT NULL,
   `password` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `profil`
@@ -74,7 +105,9 @@ CREATE TABLE IF NOT EXISTS `profil` (
 INSERT INTO `profil` (`id`, `nom`, `prenom`, `email`, `password`) VALUES
 (23, 'Goetschel', 'Numa', 'numa@mail.com', '$2y$10$sCTv7Wmc998To3CFm6tbZuPScImbPoX/bjyUZbT1b6FOjF.7GuqEW'),
 (5, 'test', 'test', 'test@test.com', '$2y$10$dvh3HAKgk4Xj429/63Qa6eingZf1si2cLGV3zDcMiSgfoy2mRYVRS'),
-(24, 'testnu', 'ma', 'te@te.te', '$2y$10$bhWquGzR7Ckm2mwvnwT.QOxYLNDtU0ccwUgSYNx2OUaqGB0DuAmmG');
+(24, 'testnu', 'ma', 'te@te.te', '$2y$10$bhWquGzR7Ckm2mwvnwT.QOxYLNDtU0ccwUgSYNx2OUaqGB0DuAmmG'),
+(25, 'lala', 'la', 'la@la.la', '$2y$10$49aUlueh6W1laQoh5cHGxe8dsSeCkgAqqCJuSr5U.cWProO/Nsyvi'),
+(26, 'Marisol', 'Marisol', 'ma@am.com', '$2y$10$Y6.jJZgZPe5Jjz3LYJAsa.FeJoEZxVpuhU.iI/wgQ1LLPLlh9xOsC');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
