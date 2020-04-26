@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+$bdd = new PDO('mysql:host=localhost;dbname=icare','root','');
+$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Gestion des erreurs.
+
+?>
 <!DOCTYPE html>
 
 <head>
@@ -24,7 +31,7 @@
             <div class="top-bar-left">
                 <ul class="menu">
                     <li class="menu-text"> iCare</li>
-                    <li><a href="plannification.html">Plannification</a></li>
+                    <li><a href="plannification.php">Plannification</a></li>
                     <li><a href="#">Planning</a></li>
                     <li><a href="#">Messagerie</a></li>
                     <li><a href="#">Alertes</a></li>
@@ -49,8 +56,8 @@
                     <div class="cell">
                         <section>
                             <section class="tag-cloud menu vertical left">
-                                <a href="profil.html"><i class="fas fa-pencil-alt"></i> Modifier le profil</a>
-                                <a href="parametres.html"><i class="fas fa-user-alt"></i> Paramètres du compte</a>
+                                <a href="profil.php"><i class="fas fa-pencil-alt"></i> Modifier le profil</a>
+                                <a href="parametres.php"><i class="fas fa-user-alt"></i> Paramètres du compte</a>
                             </section>
                         </section>
                     </div>
@@ -60,12 +67,12 @@
                         <div class="cell shrink">
                             <div class="grid-x">
                                 <div class="cell small-8">
-                                    <h1>Modifier le profil</h1>
+                                    <h1>Modifier les données de connexion</h1>
                                     <p> Voici les informations relatives à votre profil, pour les modifier,
                                         c'est
                                         simple
                                         !
-                                        Corrigez les et cliquez sur "terminer"</p>
+                                        Corrigez les et cliquez sur "terminer" !</p>
                                 </div>
                                 <div class="cell auto">
                                     <div class="tag-cloud">
@@ -82,39 +89,26 @@
                             </div>
                         </div>
                         <div class="cell shrink">
-                            <h2>Photo</h1>
-                                <img class="photo-de-profil" src="img/emma.png" />
-                                <button>
-                                    <a href="#"> Modifier</a>
-                                </button>
+                            <h2> Informations de base </h2>
+                            <div class="cell small-8">
+                                <h3>Mail</h3>
+                                <input><?php echo $_SESSION['email'];?></input>
+                                <h3>Mot de passe</h3>
+                                <input></input>
+                            </div>
                         </div>
                         <div class="cell shrink">
+                            <h2> Modifications du compte </h2>
                             <div class="grid-x">
-                                <div class="cell small-6">
-                                    <h2>Nom</h2>
-                                    <input></input>
+                                <div class="cell small-8">
+                                    <p>Supprimer le compte et les données qui y sont associés</p>
                                 </div>
-                                <div class="cell small-6">
-                                    <h2>Prénom</h2>
-                                    <input></input>
+                                <div class="cell auto text-center">
+                                    <button>
+                                        <a href="#">Fermer le compte</a>
+                                    </button>
                                 </div>
                             </div>
-                        </div>
-                        <div class="cell shrink">
-                            <h2>Date de Naissance</h2>
-                            <input></input>
-                        </div>
-                        <div class="cell shrink">
-                            <h2>Adresse</h2>
-                            <div>
-                                <input></input>
-                                <input></input>
-                                <input></input>
-                            </div>
-                        </div>
-                        <div class="cell shrink">
-                            <h2>Commentaires</h2>
-                            <input> </input>
                         </div>
                     </div>
                 </div>
