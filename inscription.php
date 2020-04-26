@@ -104,67 +104,96 @@ if(isset($_POST["forminscription"])){
 
 <body>
     <form class="log-in-form" method="POST">
-        <h1 class="text-center"> S'inscire </h1>
-        <table>
-            <tr>
-                <td align="right">
-                    <label for="nom">Nom:</label>
-                </td>
-                <td>
-                    <input type="text" placeholder="Votre nom" id="nom" name="nom"
-                        value="<?php if(isset($nom)){echo $nom;}?>">
-                <td>
-            </tr>
-            <tr>
-                <td align="right">
-                    <label for="prenom">Prenom:</label>
-                </td>
-                <td>
-                    <input type="text" placeholder="Votre prenom" id="prenom" name="prenom"
-                        value="<?php if(isset($prenom)){echo $prenom;}?>">
-                <td>
-            </tr>
-            <tr>
-                <td align="right">
-                    <label for="mail">Mail:</label>
-                </td>
-                <td>
-                    <input type="text" placeholder="Mail" id="mail" name="mail"
-                        value="<?php if(isset($mail)){echo $mail;}?>">
-                <td>
-            </tr>
-            <tr>
-                <td align="right">
-                    <label for="mail2">Confirmer votre mail:</label>
-                </td>
-                <td>
-                    <input type="text" placeholder="Confirmer votre mail" id="mail2" name="mail2"
-                        value="<?php if(isset($mail2)){echo $mail2;}?>">
-                <td>
-            </tr>
-            <tr>
-                <td align="right">
-                    <label for="mdp">Votre mot de passe:</label>
-                </td>
-                <td>
-                    <input type="password" placeholder="Votre mot de passe" id="password" name="password">
-                <td>
-            </tr>
-            <tr>
-                <td align="right">
-                    <label for="mdp2">Confirmer votre mot de passe</label>
-                </td>
-                <td>
-                    <input type="password" placeholder="Confirmer votre mot de passe" id="password2" name="password2">
-                <td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <input type="submit" name="forminscription" value="Je m'inscris">
-                </td>
-        </table>
-        <br>
+        <h1 class="text-center"> S'inscire</h1>
+        <!-- Essai Marisol -->
+        <label for="nom">Nom
+            <input type="text" placeholder="Votre nom" id="nom" name="nom" value="<?php if(isset($nom)){echo $nom;}?>">
+        </label>
+        <label for="prenom">Prenom
+        <input type="text" placeholder="Votre prenom" id="prenom" name="prenom"
+            value="<?php if(isset($prenom)){echo $prenom;}?>">
+            </label>
+        <label for="mail">Mail
+        <input type="text" placeholder="Mail" id="mail" name="mail" value="<?php if(isset($mail)){echo $mail;}?>">
+        </label>
+        <label for="mail2">Confirmer votre mail 
+        <input type="text" placeholder="Confirmer votre mail" id="mail2" name="mail2"
+            value="<?php if(isset($mail2)){echo $mail2;}?>">
+            </label>
+        <label for="mdp">Votre mot de passe
+        <input type="password" placeholder="Votre mot de passe" id="password" name="password">
+        </label>
+        <label for="mdp2">Confirmer votre mot de passe
+        <input type="password" placeholder="Confirmer votre mot de passe" id="password2" name="password2">
+        </label>
+        <p><input type="submit" class="button expanded"  name="forminscription" value="Je m'inscris"> </p>
+    </form>
+    <?php
+      if(isset($erreur)){
+        echo "<font color='red'>".$erreur."</font>";
+      }
+      ?>
+    <!-- Code Numeuh -->
+    <table>
+        <tr>
+            <td align="right">
+                <label for="nom">Nom:</label>
+            </td>
+            <td>
+                <input type="text" placeholder="Votre nom" id="nom" name="nom"
+                    value="<?php if(isset($nom)){echo $nom;}?>">
+            <td>
+        </tr>
+        <tr>
+            <td align="right">
+                <label for="prenom">Prenom:</label>
+            </td>
+            <td>
+                <input type="text" placeholder="Votre prenom" id="prenom" name="prenom"
+                    value="<?php if(isset($prenom)){echo $prenom;}?>">
+            <td>
+        </tr>
+        <tr>
+            <td align="right">
+                <label for="mail">Mail:</label>
+            </td>
+            <td>
+                <input type="text" placeholder="Mail" id="mail" name="mail"
+                    value="<?php if(isset($mail)){echo $mail;}?>">
+            <td>
+        </tr>
+        <tr>
+            <td align="right">
+                <label for="mail2">Confirmer votre mail:</label>
+            </td>
+            <td>
+                <input type="text" placeholder="Confirmer votre mail" id="mail2" name="mail2"
+                    value="<?php if(isset($mail2)){echo $mail2;}?>">
+            <td>
+        </tr>
+        <tr>
+            <td align="right">
+                <label for="mdp">Votre mot de passe:</label>
+            </td>
+            <td>
+                <input type="password" placeholder="Votre mot de passe" id="password" name="password">
+            <td>
+        </tr>
+        <tr>
+            <td align="right">
+                <label for="mdp2">Confirmer votre mot de passe</label>
+            </td>
+            <td>
+                <input type="password" placeholder="Confirmer votre mot de passe" id="password2" name="password2">
+            <td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" name="forminscription" value="Je m'inscris">
+            </td>
+    </table>
+    <br>
     </form>
     <?php
       if(isset($erreur)){
