@@ -1,93 +1,112 @@
 .log-in-form {
-    border: 1px solid #FAD4C0;
-    padding: 1rem 3rem;
-    border-radius: 0;
-    margin: 1rem auto;
-    width: 40%;
-  }
+  border: 1px solid #FAD4C0;
+  padding: 1rem 3rem;
+  border-radius: 0;
+  margin: auto;
+  width: 40%;
+  margin-top: 50vh; 
+  transform: translateY(-60%);
+}
+
 
 .sticky-topbar {
-    width: 100%;
-  }
+  width: 100%;
+}
 
 .photo-de-profil{
-    border-radius: 50%;
-    overflow: hidden;
-    width: 40px;
-    height: 40px;
-    margin: auto;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 35px;
+  height: 35px;
+  margin: auto;
 }
 
 .illustration{
-    height: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    overflow: hidden;
-    border-radius: 5px ;
-    text-align: center;
-    vertical-align: bottom;
+  height: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  border-radius: 5px ;
+  text-align: center;
+  vertical-align: bottom;
 }
 
 .illustration>img{
-    width: 400px;
-    height: 400px;
-    object-fit: contain;
-    transform: translateY(50%);
+  width: 400px;
+  height: 400px;
+  object-fit: contain;
+  transform: translateY(50%);
 
 }
 
 .tag-cloud-section {
-  background: #7b93a4;
-  padding: 0.5rem;
-  margin: 5px auto;
-  border-radius: 15px;
+background: #7b93a4;
+padding: 0.5rem;
+margin: 5px auto;
+border-radius: 15px;
 }
 
 .tag-cloud-title {
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: bold;
-  color: #e6e6e6;
-  border-bottom: 1px solid #cacaca;
-  padding: 1rem 0;
-  margin-bottom: 1rem;
+text-align: center;
+text-transform: uppercase;
+font-weight: bold;
+color: #e6e6e6;
+border-bottom: 1px solid #cacaca;
+padding: 1rem 0;
+margin-bottom: 1rem;
 }
 
 .tag-cloud {
-  margin: 1rem;
-  text-align: center;
-  list-style: none;
+margin: 1rem;
+text-align: center;
+list-style: none;
+}
+
+.tag-cloud.left{
+text-align: left;
 }
 
 .tag-cloud .tag-cloud-individual-tag {
-  display: inline-block;
-  padding: 0.33333rem 0.5rem;
-  border-radius: 0;
-  font-size: 0.8rem;
-  line-height: 1;
-  white-space: nowrap;
-  cursor: default;
-  border-radius: 5000px;
-  background: #2c3840;
-  display: inline-block;
-  color: #e6e6e6;
-  margin: 3px;
-  text-transform: uppercase;
-  font-weight: bold;
+display: inline-block;
+padding: 0.33333rem 0.5rem;
+border-radius: 0;
+font-size: 0.8rem;
+line-height: 1;
+white-space: nowrap;
+cursor: default;
+border-radius: 5000px;
+background: #2c3840;
+display: inline-block;
+color: #e6e6e6;
+margin: 3px;
+text-transform: uppercase;
+font-weight: bold;
 }
 
 .tag-cloud .tag-cloud-individual-tag .fa {
-  margin-left: 7px;
-  color: #e6e6e6;
+margin-left: 7px;
+color: #e6e6e6;
 }
 
 .tag-cloud .tag-cloud-individual-tag:hover {
-  background: black;
-  transition: background-color .2s ease-in;
+background: black;
+transition: background-color .2s ease-in;
 }
 
 /* API GOOGLE */
 
 #map {
-    height: 100%;
+  height: 100%;
+}
+
+i{
+margin-right: 0.8rem;
+}
+
+.bg-white{
+background-color: #fefefe ;
+}
+
+.pdg-2{
+padding: 0.33333rem 0.5rem
 }

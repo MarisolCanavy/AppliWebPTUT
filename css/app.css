@@ -550,7 +550,6 @@ td {
 
 p {
   font-family: 'Raleway', sans-serif;
-  margin-bottom: 1rem;
   font-size: inherit;
   line-height: 1.6;
   text-rendering: optimizeLegibility; }
@@ -593,14 +592,14 @@ h1, .h1 {
   font-size: 1.5rem;
   line-height: 1.4;
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 0.8rem;
   padding-bottom: 0.4em;
   border-bottom: #5e5e5e solid 1px;}
 
 h2, .h2 {
   font-size: 1.25rem;
   line-height: 1.4;
-  margin-top: 0;
+  margin-top: 1rem;
   margin-bottom: 0.5rem; }
 
 h3, .h3 {
@@ -2564,6 +2563,7 @@ ul.no-bullet, ol.no-bullet {
     position: relative;
     top: 0.4em;
     display: inline-block;
+    float: right;
     margin-left: 1em; }
   .button.dropdown.hollow::after, .button.dropdown.clear::after {
     border-top-color: #1779ba; }
@@ -4225,7 +4225,7 @@ a.thumbnail {
   border-right-style: solid;
   border-color: transparent #1779ba transparent transparent;
   display: inline-block;
-
+  vertical-align: middle;
   margin-right: 0.75rem; }
 
 .dropdown.menu > li.opens-left > .is-dropdown-submenu {
@@ -4236,9 +4236,7 @@ a.thumbnail {
 .dropdown.menu > li.opens-right > .is-dropdown-submenu {
   top: 100%;
   right: auto;
-  left: 0; 
-  border: none;
-}
+  left: 0; }
 
 .dropdown.menu > li.is-dropdown-submenu-parent > a {
   position: relative;
