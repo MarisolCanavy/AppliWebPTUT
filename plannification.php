@@ -1,3 +1,8 @@
+<?php
+
+$bdd = new PDO('mysql:host=localhost;dbname=icare','root','');
+$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Gestion des erreurs.
+?>
 <!DOCTYPE html>
 
 <head>
@@ -22,49 +27,9 @@
 
 <body>
     <header>
-        <div class="sticky-container" data-sticky-container style="height: 4rem;">
-            <div class="sticky xticky-topbar is-stuck is-at-top" data-sticky="ne76bl-cticky"
-                data-options="anchor: page; marginTop: 0; stickyOn: small;"
-                style="max-width: 1680px; margin-top: 0em; top: 0px; bottom: auto;" data-events="resize">
-                <div class="top-bar" role="banner">
-                    <div class="top-bar-left">
-                        <ul class="menu dropdown">
-                            <li class="menu-text"> iCare</li>
-                            <li><a href="plannification.html">Plannification</a></li>
-                            <li><a href="planning.html">Planning</a></li>
-                            <li class="has-submenu is-dropdown-submenu-parent opens-right" id="maCreation">
-                                <a href="#">Création</a>
-                                <ul class="submenu menu vertical is-dropdown-submenu first-sub"
-                                    id="afficherInfosCreation">
-                                    <li><a href="creationPatient.html">Fichier Patient</a></li>
-                                    <li><a href="creationInfirmier.html">Fichier Infirmier</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="messagerie.html">Messagerie</a></li>
-                            <li><input type="search" placeholder="Faire une recherche" id="recherche"></li>
-                            <li><button type="button" class="button">Recherche</button></li>
-                            <!-- action php en fonction de la recherche-->
-                        </ul>
-                    </div>
-                    <div class="top-bar-right">
-                        <ul class="dropdown menu">
-                            <li><img class="photo-de-profil" src="img/emma.png" alt="#"></li>
-                            <li class="has-submenu is-dropdown-submenu-parent opens-right" id="monCompte">
-                                <a href="#">Mon Compte</a>
-                                <!-- insérer un effet à la déconnexion-->
-                                <ul class="submenu menu vertical is-dropdown-submenu first-sub"
-                                    id="afficherInfosCompte">
-                                    <li><a href="monprofil.html">Mon profil</a></li>
-                                    <li><a href="monprofil.html">Mon compte</a></li>
-                                    <li><a href="paramètres.html">Paramètres</a></li>
-                                    <li><a href="connexion.html">Déconnexion</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+       <?php
+        include "header.php" ;
+       ?>
     </header>
     <main>
         <div class="grid-container">
@@ -74,11 +39,16 @@
                         <section class="tag-cloud-section">
                             <h5 class="tag-cloud-title">INFIRMIER.E.S DISPONIBLE.S</h5>
                             <section class="tag-cloud">
-                                <a class="tag-cloud-individual-tag" onclick="afficheItineraire()">Jere</a>
-                                <a class="tag-cloud-individual-tag" onclick="afficheItineraire2()">Alice</a>
-                                <a class="tag-cloud-individual-tag" href="#">Gilles</a>
-                                <a class="tag-cloud-individual-tag" href="#">Juliette</a>
-                                <a class="tag-cloud-individual-tag" href="#">Lucas</a>
+                                <?php
+                                $rechercheInfirmier=$bdd->prepare("SELECT nom,prenom from infirmier");
+                                $rechercheInfirmier->execute();
+                                $nbInfirmier = $rechercheInfirmier->rowCount(); 
+                                for ($i = 1; $i <= $nbInfirmier; $i++) 
+                                {            
+                                  $listeInf = $rechercheInfirmier->fetch();
+                                  echo "<a class='tag-cloud-individual-tag' onclick='afficheItineraire()''>",$listeInf['nom']," ",$listeInf['prenom'],"</a>";
+                                }
+                                ?>
                             </section>
                         </section>
                     </div>
@@ -97,10 +67,17 @@
                                                 patient.s à prendre en charge : </a></h5>
                                         <section class="tag-cloud menu vertical">
                                             <!-- Afficher tous les marqueurs : fonction js + php -->
-                                            <a class="tag-cloud-individual-tag"
-                                                onclick="positionnerMarqueur()">Danielle</a>
-                                            <a class="tag-cloud-individual-tag" href="#">Armande</a>
-                                            <a class="tag-cloud-individual-tag" href="#">Jean</a>
+                                            <?php
+                                            $recherchePatient=$bdd->prepare("SELECT nom,prenom from patient");
+                                            $recherchePatient->execute();
+                                            $nbPatient = $recherchePatient->rowCount(); 
+                                            for ($i = 1; $i <= $nbPatient; $i++) 
+                                            {            
+                                              $listePat = $recherchePatient->fetch();
+                                              echo "<a class='tag-cloud-individual-tag'
+                                                onclick='positionnerMarqueur()'>",$listePat['nom']," ",$listePat['prenom'],"</a>";
+                                            }
+                                            ?>
                                         </section>
                                     </section>
                                 </div>
@@ -108,17 +85,29 @@
                                     <section class="cell tag-cloud-section" style="transform: translateY(100%);">
                                         <strong>Infirmier: </strong>
                                         <select id="infirmier" onchange="#">
-                                            <option value="#">Jere</option>
-                                            <option value="#">Alice</option>
-                                            <option value="#">Gilles</option>
-                                            <option value="#">Juliette</option>
-                                            <option value="#">Lucas</option>
+                                            <?php
+                                            $rechercheInfirmier=$bdd->prepare("SELECT nom,prenom from infirmier");
+                                            $rechercheInfirmier->execute();
+                                            $nbInfirmier = $rechercheInfirmier->rowCount(); 
+                                            for ($i = 1; $i <= $nbInfirmier; $i++) 
+                                            {            
+                                              $listeInf = $rechercheInfirmier->fetch();
+                                              echo "<option value='#'>",$listeInf['nom']," ",$listeInf['prenom'],"</option>";
+                                            }
+                                            ?>
                                         </select>
                                         <strong>Patient: </strong>
                                         <select id="patient">
-                                            <option value="#">Danielle</option>
-                                            <option value="#">Armande</option>
-                                            <option value="#">Jean</option>
+                                            <?php
+                                            $recherchePatient=$bdd->prepare("SELECT nom,prenom from patient");
+                                            $recherchePatient->execute();
+                                            $nbPatient = $recherchePatient->rowCount(); 
+                                            for ($i = 1; $i <= $nbPatient; $i++) 
+                                            {            
+                                              $listePat = $recherchePatient->fetch();
+                                              echo "<option value='#'>",$listePat['nom']," ",$listePat['prenom'],"</option>";
+                                            }
+                                            ?>
                                         </select>
                                         <p><a class="button expanded" href="#">Associer</a></p>
                                     </section>
