@@ -134,7 +134,7 @@ if(isset($_POST["forminscription"])){
       }
       ?>
     <!-- Code Numeuh -->
-    <table>
+    <!--<table>
         <tr>
             <td align="right">
                 <label for="nom">Nom:</label>
@@ -194,7 +194,7 @@ if(isset($_POST["forminscription"])){
             </td>
     </table>
     <br>
-    </form>
+    </form>-->
     <?php
       if(isset($erreur)){
         echo "<font color='red'>".$erreur."</font>";
