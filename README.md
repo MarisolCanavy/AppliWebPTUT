@@ -10,9 +10,9 @@ L'application est destinée à l'infirmière coordinatrice.
 
 ## Pour commencer
 
-* L'infimière doit pouvoir s'authentifier pour accéder à ses différents paramètres. Pour se connecter elle utilise son « adresse mail » en tant qu’identifiant et un mot de passe.
+* L'infimière doit pouvoir s'authentifier pour accéder à ses différents paramètres. Pour se connecter elle utilise son adresse mail en tant qu’identifiant et un mot de passe.
 
-Une fois authentifié, l'application doit permettre à l'infimière la conception d'itinéraire pour chacun de ses infirmiers libéraux. Afin de visualiser, sur une carte, les trajets nous avons utilisé l'API Google Map.
+Une fois authentifié, l'application doit permettre à l'infimière de concevoir d'itinéraire pour chacun de ses infirmiers libéraux. Afin de visualiser, sur une carte, les trajets nous avons utilisé l'API Google Map.
 Elle doit pouvoir également ajouter des fichiers patients, infirmiers ainsi que des profils de connexion.
 
 
