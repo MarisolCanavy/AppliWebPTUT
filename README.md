@@ -1,4 +1,4 @@
-# Icare Application
+# ICare Application
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
 
@@ -12,7 +12,7 @@ L'application est destinée à l'infirmière coordinatrice.
 
 * L'infimière doit pouvoir s'authentifier pour accéder à ses différents paramètres. Pour se connecter elle utilise son adresse mail en tant qu’identifiant et un mot de passe.
 
-Une fois authentifié, l'application doit permettre à l'infimière de concevoir d'itinéraire pour chacun de ses infirmiers libéraux. Afin de visualiser, sur une carte, les trajets nous avons utilisé l'API Google Map.
+Une fois authentifié, l'application doit permettre à l'infimière de concevoir l'itinéraire pour chacun de ses infirmiers libéraux. Afin de visualiser, sur une carte, les trajets nous avons utilisé l'API Google Map.
 Elle doit pouvoir également ajouter des fichiers patients, infirmiers ainsi que des profils de connexion.
 
 
@@ -30,7 +30,7 @@ Projet réalisé par :
 * **Numa GOETSCHEL** _alias_ [@Numagoet](https://github.com/Numagoet)
 * **Emma SALVAN** _alias_ [@EmmaSalvan](https://github.com/EmmaSalvan)
 
-Merci d'avoir pris le temps de visiter notre Application Icare.
+Merci d'avoir pris le temps de visiter notre Application ICare.
 
 
 
