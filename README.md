@@ -25,9 +25,9 @@ Vous pouvez télécharger le projet et le lancer sur un serveur web local.
 
 Projet réalisé par : 
 * **Marisol CANAVY** _alias_ [@MarisolCanavy](https://github.com/MarisolCanavy)
+* **Gaëtan CHARBONNIER** _alias_ [@GaetanCharbonnier](https://github.com/GaetanCharbonnier)
 * **Etienne FAURE** _alias_ [@epof](https://github.com/epof)
-* **Gaëtan CHARBONNIER** _alias_ [@marienourrisson](https://github.com/marienourrisson)
-* **Numa GOETSCHEL** _alias_ [@marienourrisson](https://github.com/marienourrisson)
+* **Numa GOETSCHEL** _alias_ [@Numagoet](https://github.com/Numagoet)
 * **Emma SALVAN** _alias_ [@EmmaSalvan](https://github.com/EmmaSalvan)
 
 Merci d'avoir pris le temps de visiter notre Application Icare.
