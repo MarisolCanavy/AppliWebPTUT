@@ -2,7 +2,7 @@
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
 
-AppliWebTUT                                           
+AppliWebPTUT                                           
 On se propose de réaliser une application web en HTML/CSS et PHP pour notre Projet Tuteuré.                           
 On utilise la base de données « icare », créée sur phpMyAdmin.                                                
 Schéma de la base de données : les infirmières libéraux prennent en charge des patients, le type d'acte des actes médicaux réalisés lors de la prise en charge est spécifié, chaque prise en charge a un motif et nécéssite une ressource matérielle. 
