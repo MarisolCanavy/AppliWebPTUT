@@ -3,7 +3,7 @@
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
 
 AppliWebPTUT                                           
-On se propose de réaliser une application web en HTML/CSS/Javascript et PHP pour notre Projet Tuteuré.                           
+On se propose de réaliser une application web en HTML/CSS/JavaScript et PHP pour notre Projet Tuteuré.                           
 On utilise la base de données « icare », créée sur phpMyAdmin.                                                
 Schéma de la base de données : les infirmières libéraux prennent en charge des patients, le type d'acte des actes médicaux réalisés lors de la prise en charge est spécifié, chaque prise en charge a un motif et nécéssite une ressource matérielle. 
 L'application est destinée à l'infirmière coordinatrice.
